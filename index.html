@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2021年12月工作报告 - 卡拉肖克倩</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        :root {
+            --color-primary: #5E6AD2;
+            --color-secondary: #8D91C7;
+            --color-accent: #5E6AD2;
+            --color-light: #F5F5F7;
+            --color-dark: #1D1D1F;
+            --color-gray: #86868b;
+            --color-border: #e0e0e5;
+        }
+        
+        .dark {
+            --color-primary: #8D91C7;
+            --color-secondary: #5E6AD2;
+            --color-accent: #8D91C7;
+            --color-light: #1D1D1F;
+            --color-dark: #F5F5F7;
+            --color-gray: #a1a1a6;
+            --color-border: #333336;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: var(--color-light);
+            color: var(--color-dark);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+        }
+        
+        .dark .card {
+            background-color: #2D2D30;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--color-secondary);
+            transform: scale(1.05);
+        }
+        
+        .header {
+            background-color: var(--color-light);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        
+        .dark .header {
+            background-color: rgba(29, 29, 31, 0.8);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .timeline-item:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--color-primary);
+        }
+        
+        .timeline-item:after {
+            content: "";
+            position: absolute;
+            left: 5px;
+            top: 20px;
+            bottom: -20px;
+            width: 2px;
+            background-color: var(--color-border);
+        }
+        
+        .timeline-item:last-child:after {
+            display: none;
+        }
+        
+        .timeline-date {
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .category-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            background-color: var(--color-secondary);
+            color: white;
+            opacity: 0.9;
+        }
+        
+        .footer {
+            background-color: var(--color-light);
+            border-top: 1px solid var(--color-border);
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        .dark .footer {
+            background-color: var(--color-light);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--color-dark);
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+        
+        .summary-card {
+            border-left: 4px solid var(--color-primary);
+            background-color: rgba(94, 106, 210, 0.05);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 2rem;
+        }
+        
+        .dark .summary-card {
+            background-color: rgba(94, 106, 210, 0.1);
+        }
+        
+        .highlight {
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-title:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 80px;
+            background-color: var(--color-primary);
+            border-radius: 3px;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-item {
+                padding-left: 24px;
+            }
+            
+            .timeline-item:before {
+                width: 10px;
+                height: 10px;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <header class="header py-4">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <h1 class="text-xl md:text-2xl font-bold">2021年12月工作报告</h1>
+            <button id="themeToggle" class="theme-toggle" aria-label="切换主题">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="mb-12 fade-in">
+            <div class="summary-card">
+                <h2 class="text-xl font-bold mb-4">报告概览</h2>
+                <p class="text-base leading-relaxed">
+                    本报告详细记录了2021年12月的工作内容，主要涵盖了<span class="highlight">网络推广</span>、<span class="highlight">客户资源收集</span>、<span class="highlight">团队管理</span>、<span class="highlight">系统维护</span>以及<span class="highlight">新员工培训</span>等方面的工作。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="card p-5">
+                    <h3 class="text-lg font-semibold mb-3 flex items-center">
+                        <i class="fas fa-tasks mr-2 text-indigo-500"></i>工作重点
+                    </h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                            <span>家长资源搜集和客户跟踪</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                            <span>十分米商贸网店推广与运营</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                            <span>艺术类和素质类课程的线上宣传</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                            <span>团队绩效考核与人员培训</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                            <span>系统平台维护与数据整理</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="card p-5">
+                    <h3 class="text-lg font-semibold mb-3 flex items-center">
+                        <i class="fas fa-globe mr-2 text-indigo-500"></i>推广平台
+                    </h3>
+                    <div class="flex flex-wrap">
+                        <span class="category-tag">昆山论坛</span>
+                        <span class="category-tag">苏州论坛</span>
+                        <span class="category-tag">姑苏网</span>
+                        <span class="category-tag">太仓论坛</span>
+                        <span class="category-tag">家长帮</span>
+                        <span class="category-tag">六九同城</span>
+                        <span class="category-tag">酷发布</span>
+                        <span class="category-tag">乐学培训网</span>
+                        <span class="category-tag">世界工厂</span>
+                        <span class="category-tag">中国供应商</span>
+                        <span class="category-tag">百叶信息网</span>
+                        <span class="category-tag">知乎</span>
+                        <span class="category-tag">哔哩哔哩</span>
+                        <span class="category-tag">微博</span>
+                        <span class="category-tag">贴吧</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12 fade-in">
+            <h2 class="section-title text-2xl font-bold">工作日志</h2>
+            
+            <div class="timeline mt-8">
+                <div class="timeline-item">
+                    <div class="timeline-date">12月1日</div>
+                    <div class="card p-4">
+                        <p>到苏大找周老师学习最新的公司政策，回来后对周老师的总结进行消化，并完成了11月份的工作报告总结。把搜集到的相关家长信息提交了张老师进行跟踪。晚上在网上继续搜集家长有效资源。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">12月2日</div>
+                    <div class="card p-4">
+                        <p>月初几天比较忙，开始统计和整理上个月团队绩效考核、网络资源搜集的数据整理、网络推广的话单的数据整理等。由于前段时间昆山论坛维护不能发帖，今日恢复后网上家长发帖量信息大增，筛选有补课需求的家长信息。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">12月3日</div>
+                    <div class="card p-4">
+                        <p>百度推广账户费用充值查询明细报告和说明提交周老师，为不影响推广效果，已经提前进行了话费充值。对业绩和技能提升方面进行了相关的培训。在苏州论坛，苏州社区，姑苏网，昆山论坛搜集有意向家长信息。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">12月4-6日</div>
+                    <div class="card p-4">
+                        <p>向陆婷老师要了十分米那边的老师微信，根据商品特性，制定推广策略。维护网站上的艺术类和素质类的展示信息。完善新版网络专员薪资体系考核制度，与十分米商贸相关人员沟通推广事宜。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">12月7-9日</div>
+                    <div class="card p-4">
+                        <p>对新版网络专员试运行方案进行了修改。在乐宇通王，中城网，驰聘信息网等平台进行了发帖测试。新人面试接待，协助完成试用期考核表。继续在各论坛搜集家长信息，对十分米商贸的生活馆进行推广。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">12月10-11日</div>
+                    <div class="card p-4">
+                        <p>调休去火车站接朋友，顺便了解其求职意向。在学而思旗下家长帮网站中发现了多个家长需要补课的信息，已提交跟进。在培训通，百叶信息网等发布了艺术类、素质类的推广贴，注册了网商之窗、鸿商网等网站。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">12月25-27日</div>
+                    <div class="card p-4">
+                        <p>22至24日回家探亲，期间与新员工沟通工作事宜。百度推广合同协议已处理完毕。整理客户资源，系统审批团队单据。对接话单查询系统，处理校区话单短号不通的问题。远程协助新员工办理入职手续。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">12月28-31日</div>
+                    <div class="card p-4">
+                        <p>在多个平台签到兑换金币发十分米商贸店铺的推广帖。培训新员工从店铺和商品信息的基本整理，到网站注册流程，再到发帖内容优化等。为十分米商贸制作LOGO图片用于推广，确保品牌形象一致性。年底主要以年货推广为主，扩大宣传渠道。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mb-12 fade-in">
+            <h2 class="section-title text-2xl font-bold">工作成果统计</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="card p-5 text-center">
+                    <div class="text-4xl font-bold text-indigo-600 mb-2">15+</div>
+                    <div class="text-lg font-medium">推广平台</div>
+                    <p class="text-sm text-gray-500 mt-2">覆盖社区论坛、分类信息网站及自媒体平台</p>
+                </div>
+                
+                <div class="card p-5 text-center">
+                    <div class="text-4xl font-bold text-indigo-600 mb-2">3</div>
+                    <div class="text-lg font-medium">主要业务方向</div>
+                    <p class="text-sm text-gray-500 mt-2">学科类补课、艺术类课程、十分米商品推广</p>
+                </div>
+                
+                <div class="card p-5 text-center">
+                    <div class="text-4xl font-bold text-indigo-600 mb-2">1</div>
+                    <div class="text-lg font-medium">新员工培训</div>
+                    <p class="text-sm text-gray-500 mt-2">完成王建强老师的系统培训与入职辅导</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mb-12 fade-in">
+            <h2 class="section-title text-2xl font-bold">月度总结</h2>
+            
+            <div class="card p-6">
+                <p class="leading-relaxed">
+                    12月份的工作主要集中在以下几个方面：社会实践课自媒体视频平台宣传推广、素质课推广、艺术类课程发布、一对一家长有效资源搜集、十分米商贸店铺商品全网推广，各校区话单通讯查询、互联网公司负面信息监管跟踪、团队技能业务培训、新进人员业务开展培训。
+                </p>
+                <p class="leading-relaxed mt-4">
+                    在推广方面，充分利用了多个网络平台资源，包括传统论坛、分类信息网站、知乎、哔哩哔哩等高权重平台，为公司业务带来了更广泛的曝光。同时，通过家长帮、昆山论坛等渠道搜集了大量有意向的家长资源，及时提交给相关同事跟进。
+                </p>
+                <p class="leading-relaxed mt-4">
+                    在团队管理方面，完善了网络专员岗位薪资体系，对团队成员进行了业绩和技能培训，并协助完成了团队考核工作。此外，还对新入职员工王建强进行了全方位的业务培训。
+                </p>
+                <p class="leading-relaxed mt-4">
+                    在系统维护方面，协助解决了校区话单查询系统的问题，为团队日常工作提供了便利。年底为十分米商贸设计了统一的LOGO，提升了品牌形象，并将推广重点转向年货商品，为节日销售做准备。
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="font-bold text-lg mb-2">卡拉肖克倩</h3>
+                    <p class="text-sm text-gray-600">网络营销专员 | 内容推广</p>
+                </div>
+                
+                <div class="flex space-x-4">
+                    <a href="https://twitter.com/karashawkeqian" class="text-gray-600 hover:text-indigo-600 transition-colors" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-indigo-600 transition-colors">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-indigo-600 transition-colors">
+                        <i class="fab fa-weixin text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-6 pt-6 border-t border-gray-200 text-center text-sm text-gray-600">
+                <p>© 2025 卡拉肖克倩. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 主题切换功能
+        const themeToggle = document.getElementById('themeToggle');
+        const icon = themeToggle.querySelector('i');
+        
+        // 检查用户偏好
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            
+            if (document.body.classList.contains('dark')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+        
+        // 淡入动画
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            fadeElements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
